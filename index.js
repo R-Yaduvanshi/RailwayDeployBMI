@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
+const port = process.env.PORT || 8000;
 app.use(express.json());
 const bcrypt = require("bcrypt");
 const { connection } = require("./config/db");
@@ -114,7 +115,7 @@ app.get("/getBMIrecords", authentication, async (req, res) => {
   });
 });
 
-app.listen(8000, async () => {
+app.listen(port, async () => {
   try {
     await connection;
     console.log("Connecting to to db successfull");
